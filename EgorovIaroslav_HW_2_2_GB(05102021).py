@@ -1,28 +1,27 @@
-def get_sign(x):
-    if x[0] in '+-':
-        return x[0]
+"""
+2. Посчитать четные и нечетные цифры введенного натурального числа.
+Например, если введено число 34560, то у него 3 четные цифры (4, 6 и 0) и 2 нечетные (3 и 5).
+"""
+import math
 
-arr = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
-out = []
+x = int(input('Input number: '))
 
-for elem in arr:
-    if elem.isdigit():
-        number = int(elem)
-        if number < 10:
-            str_number = '"' + "0" + str(number) + '"'
-        else:
-            str_number = '"' + str(number) + '"'
-        out.append(str_number)
-    elif elem[0] in "+-":
-        number = int(elem[1:])
-        if number < 10:
-            str_number = '"' + elem[0] + "0" + str(number) + '"'
-        else:
-            str_number = '"' + str(number) + '"'
-        out.append(str_number)
-    else:
-        out.append(elem)
+odd = 0
+even = 0
 
-out_string = " ".join(out)
-print(out_string)
+def last_odd_or_even(x):
+  global odd, even
+  last_digit = x % 10
+  if last_digit % 2 == 0:
+    even += 1
+  else:
+    odd += 1
 
+last_odd_or_even(x)
+
+while x >= 10:
+  x = math.floor(x / 10)
+  last_odd_or_even(x)
+
+print('Odd:', odd)
+print('Even:', even)
