@@ -1,10 +1,14 @@
-"""
-1. Написать генератор нечётных чисел от 1 до n (включительно), используя ключевое слово yield, например:
-"""
-def odd_nums(max_value):
-    n=1
-    while n <= max_value:
-        yield n
-        n += 2
+firma = {}
+n = int(input("Количество предприятий"))
+s = 0
+for i in range(n):
+    fName = input(str(i + 1) + "фирма")
+    volume = int(input("Прибыль "))
+    firma[fName] = volume
+    s += volume
 
-odd_to_15 = odd_nums(15)
+avrg = s / n
+print("Средняя прибыль {}".format(avrg))
+for i in firma:
+    if firma[i] > avrg:
+        print(i)
